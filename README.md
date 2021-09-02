@@ -1,7 +1,7 @@
 # BeautyBar
-
 This app is about to provide beauty services.
-It will consist 5 Views:
+
+It will consist of 5 Views:
 1. Main View with news from developers and some beauty lifehacks/beauty news
 2. Services View where users will have to find there services they want 
 3. Promotions View
