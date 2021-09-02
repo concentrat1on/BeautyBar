@@ -1,0 +1,45 @@
+//
+//  ServiceCell.swift
+//  BeautyBar
+//
+//  Created by Илья on 27.08.2021.
+//
+
+import SwiftUI
+
+struct ServiceCell: View {
+    // MARK: Cell for ServiceView
+    let text: String
+    let image: Image
+    
+    var body: some View {
+        ZStack {
+            VStack(alignment: .leading) {
+                Text(text)
+                    .font(.system(size: 25))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.top, 3)
+                    .padding(.leading)
+                HStack {
+                    Spacer()
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 70, height: 70)
+                        .padding([.bottom, .trailing], 4)
+                }
+                .frame(width: 175)
+            }
+        }
+        .background(Color.blue)
+        .cornerRadius(12)
+        .shadow(color: .blue, radius: 5, x: 0.0, y: 0.0)
+    }
+}
+
+struct ServiceCell_Previews: PreviewProvider {
+    static var previews: some View {
+        ServiceCell(text: "Макияж", image: Image("MakeUp"))
+    }
+}
