@@ -17,8 +17,8 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 switch tabBar.currentPage {
-                case .home:
-                    HomeView()
+                case .news:
+                    NewsView()
                 case .services:
                     ServicesView()
                 case .promotions:

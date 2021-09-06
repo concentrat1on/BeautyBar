@@ -11,11 +11,11 @@ struct TabBarView: View {
         HStack {
             TabBarIconView(
                 tabBar: tabBar,
-                assignedPage: .home,
+                assignedPage: .news,
                 width: width/5,
                 height: height/26,
                 systemIconName: "house",
-                tabName: "Главная"
+                tabName: "Новости"
             )
             TabBarIconView(
                 tabBar: tabBar,

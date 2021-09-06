@@ -27,5 +27,6 @@ enum FBKeys {
         static let id = "id"
         static let title = "title"
         static let imageURL = "imageURL"
+        static let text = "text"
     }
 }

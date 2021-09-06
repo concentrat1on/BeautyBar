@@ -11,6 +11,11 @@ struct ServiceCell: View {
     // MARK: Cell for ServiceView
     let text: String
     let image: Image
+    private let color = Color.init(
+        red: Double.random(in: 0.1...0.9),
+        green: Double.random(in: 0.1...0.9),
+        blue: Double.random(in: 0.1...0.9)
+    )
     
     var body: some View {
         ZStack {
@@ -32,9 +37,9 @@ struct ServiceCell: View {
                 .frame(width: 175)
             }
         }
-        .background(Color.blue)
+        .background(color)
         .cornerRadius(12)
-        .shadow(color: .blue, radius: 5, x: 0.0, y: 0.0)
+        .shadow(color: color, radius: 5, x: 0.0, y: 0.0)
     }
 }
 

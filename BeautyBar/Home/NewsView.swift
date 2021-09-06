@@ -9,20 +9,22 @@ import SwiftUI
 import Firebase
 
 //MARK: News from Firebase (WIP)
-struct HomeView: View {
-    @State private var news: [FBNews] = []
+struct NewsView: View {
     
+    @State private var news: [FBNews] = []
 
     var body: some View {
-        
         NavigationView {
-            List(news) { pieceOfNews in
-                VStack(alignment: .leading) {
-                    Text("\(pieceOfNews.id)")
-                    Text(pieceOfNews.imageURL)
-                    Text(pieceOfNews.title)
-
+            ScrollView {
+            VStack {
+                ForEach(news) { pieceOfNews in
+                    NewsCell(
+                        title: pieceOfNews.title,
+                        imageURL: URL(string: pieceOfNews.imageURL)!, placeholder: "", texts: pieceOfNews.text)
+                    Divider()
                 }
+                Spacer()
+            }
             }
             .navigationTitle("Новости")
             .onAppear() {
@@ -42,6 +44,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        NewsView()
     }
 }
