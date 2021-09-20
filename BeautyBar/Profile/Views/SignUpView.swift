@@ -21,68 +21,78 @@ struct SignUpView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                Group {
-                    VStack(alignment: .leading) {
-                        TextFieldView(text: self.$user.email, color: .black, placeholder: "Email адрес")
-                        if !user.validEmailText.isEmpty {
-                            Text(user.validEmailText).font(.caption).foregroundColor(.red)
-                        }
-                    }
-                    VStack(alignment: .leading) {
-                        SecureFieldView(text: self.$user.password, color: .black, placeholder: "Пароль")
-                        if !user.validPasswordText.isEmpty {
-                            Text(user.validPasswordText).font(.caption).foregroundColor(.red)
-                        }
-                    }
-                    VStack(alignment: .leading) {
-                        SecureFieldView(text: self.$user.confirmPassword, color: .black, placeholder: "Повторите пароль")
-                        if !user.passwordMatch(ConfirmPassword: user.confirmPassword) {
-                            Text(user.validConfirmPasswordText).font(.caption).foregroundColor(.red)
-                        }
-                    }
-                    .padding(.bottom, 30)
-                    VStack(alignment: .leading) {
-                        TextFieldView(text: self.$user.fullname, color: .gray, placeholder: "Имя и Фамилия")
-                        if !user.validFullnameText.isEmpty {
-                            Text(user.validFullnameText).font(.caption).foregroundColor(.red)
-                        }
-
-                    }
-                    VStack(alignment: .leading) {
-                        TextFieldView(text: self.$user.city, color: .gray, placeholder: "Город")
-                        if !user.validCityText.isEmpty {
-                            Text(user.validCityText).font(.caption).foregroundColor(.red)
-                        }
-                    }
-                } .frame(width: 350)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                VStack(spacing: 20) {
-                    ButtonView(
-                        width: 225,
-                        height: 50,
-                        text: "Зарегистрироваться",
-                        color: .white,
-                        frameColor: color,
-                        opacity: 1) {
-                        FBAuth.createUser(
-                            withEmail: self.user.email,
-                            name: self.user.fullname,
-                            password: self.user.password,
-                            city: self.user.city) { result in
-                            switch result {
-                            case .failure(let error):
-                                self.errorString = error.localizedDescription
-                                self.showError = true
-                            case .success( _):
-                                print("Аккаунт успешно был зарегистрирован")
+            ScrollView {
+                VStack {
+                    Group {
+                        VStack(alignment: .leading) {
+                            TextFieldView(text: self.$user.email, color: .black, placeholder: "Email адрес")
+                            if !user.validEmailText.isEmpty {
+                                Text(user.validEmailText).font(.caption).foregroundColor(.red)
                             }
                         }
-                    }
-                    .disabled(!user.isSignUpIsComplete)
-                    Spacer()
-                } .padding(50)
+                        VStack(alignment: .leading) {
+                            SecureFieldView(text: self.$user.password, color: .black, placeholder: "Пароль")
+                            if !user.validPasswordText.isEmpty {
+                                Text(user.validPasswordText).font(.caption).foregroundColor(.red)
+                            }
+                        }
+                        VStack(alignment: .leading) {
+                            SecureFieldView(text: self.$user.confirmPassword, color: .black, placeholder: "Повторите пароль")
+                            if !user.passwordMatch(ConfirmPassword: user.confirmPassword) {
+                                Text(user.validConfirmPasswordText).font(.caption).foregroundColor(.red)
+                            }
+                        }
+                        .padding(.bottom, 30)
+                        VStack(alignment: .leading) {
+                            TextFieldView(text: self.$user.fullname, color: .gray, placeholder: "Имя и Фамилия")
+                            if !user.validFullnameText.isEmpty {
+                                Text(user.validFullnameText).font(.caption).foregroundColor(.red)
+                            }
+                            
+                        }
+                        VStack(alignment: .leading) {
+                            TextFieldView(text: self.$user.city, color: .gray, placeholder: "Город")
+                            if !user.validCityText.isEmpty {
+                                Text(user.validCityText).font(.caption).foregroundColor(.red)
+                            }
+                        }
+                        HStack {
+                            Text("Я предоставляю услуги")
+                            Toggle("", isOn: $user.bool)
+                            Spacer()
+                            
+                        }
+                        
+                    } .frame(width: 350)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    VStack(spacing: 20) {
+                        ButtonView(
+                            width: 225,
+                            height: 50,
+                            text: "Зарегистрироваться",
+                            color: .white,
+                            frameColor: color,
+                            opacity: 1) {
+                            FBAuth.createUser(
+                                withEmail: self.user.email,
+                                name: self.user.fullname,
+                                password: self.user.password,
+                                city: self.user.city,
+                                bool: self.user.bool) { result in
+                                switch result {
+                                case .failure(let error):
+                                    self.errorString = error.localizedDescription
+                                    self.showError = true
+                                case .success( _):
+                                    print("Аккаунт успешно был зарегистрирован")
+                                }
+                            }
+                            }
+                        .disabled(!user.isSignUpIsComplete)
+                        Spacer()
+                    } .padding(50)
+                }
             } .padding(.top)
             .alert(isPresented: $showError) {
                 Alert(

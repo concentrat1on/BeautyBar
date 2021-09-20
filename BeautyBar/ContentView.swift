@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     
     @StateObject var tabBar: TabBar
     @EnvironmentObject var userInfo: UserInfo
+
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            VStack(spacing: 0) {
                 Spacer()
                 switch tabBar.currentPage {
                 case .news:
@@ -34,12 +36,24 @@ struct ContentView: View {
                         ProfileView()
                     }
                 }
-                Spacer()
                 TabBarView(tabBar: tabBar, width: geometry.size.width, height: geometry.size.height)
             }
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear(perform: userInfo.configureFirebaseStateDidChange)
+        .onAppear {
+            guard let uid = Auth.auth().currentUser?.uid else {
+                return
+            }
+            FBFirestore.retrieveFBUser(uid: uid) { result in
+                switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case.success(let user):
+                    self.userInfo.user = user
+                }
+            }
+        }
     }
 }
 

@@ -11,20 +11,22 @@ import Firebase
 //MARK: News from Firebase (WIP)
 struct NewsView: View {
     
+    
     @State private var news: [FBNews] = []
-
+    let columns = [GridItem(.flexible())]
+    
     var body: some View {
         NavigationView {
             ScrollView {
-            VStack {
-                ForEach(news) { pieceOfNews in
-                    NewsCell(
-                        title: pieceOfNews.title,
-                        imageURL: URL(string: pieceOfNews.imageURL)!, placeholder: "", texts: pieceOfNews.text)
-                    Divider()
+                 VStack {
+                    ForEach(news) { pieceOfNews in
+                        NewsCell(
+                            title: pieceOfNews.title,
+                            imageURL: URL(string: pieceOfNews.imageURL)!, placeholder: "", texts: pieceOfNews.text)
+                            .padding(.bottom, 15)
+                    }
                 }
-                Spacer()
-            }
+                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             }
             .navigationTitle("Новости")
             .onAppear() {

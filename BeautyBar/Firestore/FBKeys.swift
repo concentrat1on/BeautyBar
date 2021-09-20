@@ -12,6 +12,7 @@ enum FBKeys {
     enum CollectionPath {
         static let users = "users"
         static let news = "news"
+        static let services = "services"
     }
     
     enum User {
@@ -19,6 +20,7 @@ enum FBKeys {
         static let name = "name"
         static let email = "email"
         static let city = "city"
+        static let bool = "bool"
         
         // Add app specific keys here
     }
@@ -28,5 +30,13 @@ enum FBKeys {
         static let title = "title"
         static let imageURL = "imageURL"
         static let text = "text"
+    }
+    
+    enum Services {
+        static let id = "id"
+        static let service = "service"
+        static let title = "title"
+        static let text = "text"
+        static let date = "date"
     }
 }

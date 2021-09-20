@@ -12,6 +12,7 @@ struct BeautyBarApp: App {
     
     @StateObject var viewRouter = TabBar()
     var userInfo = UserInfo()
+    @ObservedObject var favorites = FavoritesModel()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
@@ -19,6 +20,7 @@ struct BeautyBarApp: App {
         WindowGroup {
             ContentView(tabBar: viewRouter)
                 .environmentObject(userInfo)
+                .environmentObject(favorites)
         }
     }
 }

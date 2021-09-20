@@ -15,6 +15,7 @@ struct UserViewModel {
     var fullname = ""
     var city = ""
     var age = Date()
+    var bool = Bool()
     
     // MARK: Проверка полей
     

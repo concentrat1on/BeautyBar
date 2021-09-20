@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ServiceCell: View {
     // MARK: Cell for ServiceView
+    
     let text: String
     let image: Image
+    
     private let color = Color.init(
         red: Double.random(in: 0.1...0.9),
         green: Double.random(in: 0.1...0.9),
@@ -31,14 +33,14 @@ struct ServiceCell: View {
                     image
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 70, height: 70)
-                        .padding([.bottom, .trailing], 4)
+                        .frame(width: 90, height: 90)
+                        .padding([.bottom, .trailing], 6)
                 }
                 .frame(width: 175)
             }
         }
         .background(color)
-        .cornerRadius(12)
+        .cornerRadius(20)
         .shadow(color: color, radius: 5, x: 0.0, y: 0.0)
     }
 }

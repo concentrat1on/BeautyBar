@@ -9,23 +9,24 @@ import SwiftUI
 import Firebase
 
 struct ProfileView: View {
+    @State var color: Color = Color.blue
     @EnvironmentObject var userInfo: UserInfo
     var body: some View {
         NavigationView {
-            Text("UserView")
+            Text("Hello World")
                 .navigationTitle("Привет, \(userInfo.user.name)!")
                 .navigationBarItems(trailing: Button("Выйти") {
                     FBAuth.logout { result in
                         switch result {
                         case .failure(let error):
-                        print(error.localizedDescription)
+                            print(error.localizedDescription)
                         case.success( _):
                             print("Вы успешно вышли из аккаунта")
                         }
                     }
                 })
                 .onAppear {
-                    guard let uid = Auth.auth().currentUser?.uid else {
+/*                    guard let uid = Auth.auth().currentUser?.uid else {
                         return
                     }
                     FBFirestore.retrieveFBUser(uid: uid) { result in
@@ -36,6 +37,7 @@ struct ProfileView: View {
                             self.userInfo.user = user
                         }
                     }
+ */
                 }
         }
     }

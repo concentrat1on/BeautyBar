@@ -28,16 +28,17 @@ struct NewsCell: View {
             ZStack {
                 VStack(alignment: .center) {
                     LoadImage(url: imageURL,
-                              width: UIScreen.main.bounds.width - 15,
-                              height: UIScreen.main.bounds.width / 2 * 1 - 7.5)
+                              width: UIScreen.main.bounds.width - 41,
+                              height: UIScreen.main.bounds.width / 2 * 1 - 20.5)
                     Text(title)
                         .font(.system(size: 25))
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .padding()
                 }
+                .frame(width: UIScreen.main.bounds.width - 41, alignment: .center)
                 .background(color)
-                .cornerRadius(20)
+                .cornerRadius(40)
                 .shadow(color: color, radius: 8, x: 0.0, y: 0.0)
             }
         }

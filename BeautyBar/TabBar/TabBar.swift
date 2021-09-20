@@ -2,13 +2,13 @@ import SwiftUI
 
 class TabBar: ObservableObject {
     
-    @Published var currentPage: Page = .news
+    @Published var currentPage: Page = .services
 }
 
 enum Page {
-    case news
     case services
-    case promotions
     case favorites
+    case promotions
+    case news
     case profile
 }

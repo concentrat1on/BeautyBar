@@ -16,7 +16,7 @@ class UserInfo: ObservableObject {
     }
     
     @Published var isUserAuntheticated: FirebaseAuthState = .undefined
-    @Published var user: FBUser = .init(uid: "", name: "", email: "", city: "")
+    @Published var user: FBUser = .init(uid: "", name: "", email: "", city: "", bool: false)
     
     var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
     

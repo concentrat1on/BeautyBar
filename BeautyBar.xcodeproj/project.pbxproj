@@ -28,12 +28,17 @@
 		8661797626CB02BB0099DACF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8661797526CB02BB0099DACF /* GoogleService-Info.plist */; };
 		868983B726E451AD0092DD83 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868983B626E451AD0092DD83 /* NewsCell.swift */; };
 		868983B926E66D2D0092DD83 /* PieceOfNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868983B826E66D2D0092DD83 /* PieceOfNewsView.swift */; };
+		869F4A6926EBF8AA0026018C /* FBServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F4A6826EBF8AA0026018C /* FBServices.swift */; };
+		869F4A6E26EC0E560026018C /* SectionServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F4A6D26EC0E560026018C /* SectionServiceView.swift */; };
+		869F4A7026EF97F80026018C /* SingleServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F4A6F26EF97F80026018C /* SingleServiceView.swift */; };
+		869F4A7226EFA66D0026018C /* FavoritesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F4A7126EFA66D0026018C /* FavoritesModel.swift */; };
 		86A674B026CD97E300CD820D /* FBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A674AC26CD97E300CD820D /* FBKeys.swift */; };
 		86A674B126CD97E300CD820D /* FBFireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A674AD26CD97E300CD820D /* FBFireStore.swift */; };
 		86A674B226CD97E300CD820D /* FBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A674AE26CD97E300CD820D /* FBUser.swift */; };
 		86A674B326CD97E300CD820D /* FBFireStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A674AF26CD97E300CD820D /* FBFireStoreError.swift */; };
 		86A674B626CD981200CD820D /* FBAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A674B426CD981200CD820D /* FBAuth.swift */; };
 		86A674B726CD981200CD820D /* FBAuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A674B526CD981200CD820D /* FBAuthError.swift */; };
+		86B365DD26F3F38400D6077B /* AddServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B365DC26F3F38400D6077B /* AddServiceView.swift */; };
 		86DC93D926E686B300D9A453 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC93D826E686B300D9A453 /* LoadImage.swift */; };
 		86E5408B26D842E1006FE903 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E5408A26D842E1006FE903 /* NewsView.swift */; };
 		86E5408E26D84717006FE903 /* ServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E5408D26D84717006FE903 /* ServicesView.swift */; };
@@ -68,12 +73,17 @@
 		8661797526CB02BB0099DACF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		868983B626E451AD0092DD83 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		868983B826E66D2D0092DD83 /* PieceOfNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceOfNewsView.swift; sourceTree = "<group>"; };
+		869F4A6826EBF8AA0026018C /* FBServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBServices.swift; sourceTree = "<group>"; };
+		869F4A6D26EC0E560026018C /* SectionServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionServiceView.swift; sourceTree = "<group>"; };
+		869F4A6F26EF97F80026018C /* SingleServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleServiceView.swift; sourceTree = "<group>"; };
+		869F4A7126EFA66D0026018C /* FavoritesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModel.swift; sourceTree = "<group>"; };
 		86A674AC26CD97E300CD820D /* FBKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBKeys.swift; sourceTree = "<group>"; };
 		86A674AD26CD97E300CD820D /* FBFireStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFireStore.swift; sourceTree = "<group>"; };
 		86A674AE26CD97E300CD820D /* FBUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBUser.swift; sourceTree = "<group>"; };
 		86A674AF26CD97E300CD820D /* FBFireStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFireStoreError.swift; sourceTree = "<group>"; };
 		86A674B426CD981200CD820D /* FBAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAuth.swift; sourceTree = "<group>"; };
 		86A674B526CD981200CD820D /* FBAuthError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAuthError.swift; sourceTree = "<group>"; };
+		86B365DC26F3F38400D6077B /* AddServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServiceView.swift; sourceTree = "<group>"; };
 		86DC93D826E686B300D9A453 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
 		86E5408A26D842E1006FE903 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		86E5408D26D84717006FE903 /* ServicesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesView.swift; sourceTree = "<group>"; };
@@ -126,8 +136,9 @@
 			children = (
 				864BC3AD26C96297001B523D /* BeautyBarApp.swift */,
 				864BC3AF26C96297001B523D /* ContentView.swift */,
+				86A674AA26CD97CD00CD820D /* Firestore */,
 				86E5408C26D84708006FE903 /* Services */,
-				86E5408926D842C3006FE903 /* Home */,
+				86E5408926D842C3006FE903 /* News */,
 				8661796826C991390099DACF /* Profile */,
 				8661795C26C968100099DACF /* TabBar */,
 				8661796126C9691D0099DACF /* Delegates */,
@@ -172,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				86A674A926CD97B600CD820D /* Views */,
-				86A674AA26CD97CD00CD820D /* Firestore */,
 				86A674AB26CD97D400CD820D /* Auth */,
 			);
 			path = Profile;
@@ -197,6 +207,8 @@
 				86A674AF26CD97E300CD820D /* FBFireStoreError.swift */,
 				86A674AC26CD97E300CD820D /* FBKeys.swift */,
 				86A674AE26CD97E300CD820D /* FBUser.swift */,
+				869F4A6826EBF8AA0026018C /* FBServices.swift */,
+				86E5409426DD607C006FE903 /* FBNews.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -212,22 +224,25 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		86E5408926D842C3006FE903 /* Home */ = {
+		86E5408926D842C3006FE903 /* News */ = {
 			isa = PBXGroup;
 			children = (
 				86E5408A26D842E1006FE903 /* NewsView.swift */,
-				86DC93D826E686B300D9A453 /* LoadImage.swift */,
 				868983B826E66D2D0092DD83 /* PieceOfNewsView.swift */,
-				86E5409426DD607C006FE903 /* FBNews.swift */,
+				86DC93D826E686B300D9A453 /* LoadImage.swift */,
 				868983B626E451AD0092DD83 /* NewsCell.swift */,
 			);
-			path = Home;
+			path = News;
 			sourceTree = "<group>";
 		};
 		86E5408C26D84708006FE903 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				86E5408D26D84717006FE903 /* ServicesView.swift */,
+				869F4A6D26EC0E560026018C /* SectionServiceView.swift */,
+				869F4A7126EFA66D0026018C /* FavoritesModel.swift */,
+				86B365DC26F3F38400D6077B /* AddServiceView.swift */,
+				869F4A6F26EF97F80026018C /* SingleServiceView.swift */,
 				86E5408F26D8479E006FE903 /* ServiceCell.swift */,
 			);
 			path = Services;
@@ -355,15 +370,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				869F4A7026EF97F80026018C /* SingleServiceView.swift in Sources */,
 				8661797226C9ABEC0099DACF /* FieldsView.swift in Sources */,
 				864BC3C126C96638001B523D /* TabBar.swift in Sources */,
 				868983B926E66D2D0092DD83 /* PieceOfNewsView.swift in Sources */,
 				86A674B726CD981200CD820D /* FBAuthError.swift in Sources */,
+				869F4A7226EFA66D0026018C /* FavoritesModel.swift in Sources */,
 				86E5409526DD607C006FE903 /* FBNews.swift in Sources */,
 				8661797426C9B0700099DACF /* ForgotPasswordView.swift in Sources */,
+				869F4A6E26EC0E560026018C /* SectionServiceView.swift in Sources */,
 				86A674B226CD97E300CD820D /* FBUser.swift in Sources */,
 				868983B726E451AD0092DD83 /* NewsCell.swift in Sources */,
 				86A674B126CD97E300CD820D /* FBFireStore.swift in Sources */,
+				869F4A6926EBF8AA0026018C /* FBServices.swift in Sources */,
 				864BC3BD26C962EE001B523D /* AppDelegate.swift in Sources */,
 				8661796726C990870099DACF /* ProfileView.swift in Sources */,
 				8661796C26C99FD10099DACF /* LogInWithEmailView.swift in Sources */,
@@ -377,6 +396,7 @@
 				86A674B026CD97E300CD820D /* FBKeys.swift in Sources */,
 				8661796326C969AD0099DACF /* UserInfo.swift in Sources */,
 				8661796A26C992140099DACF /* UserViewModel.swift in Sources */,
+				86B365DD26F3F38400D6077B /* AddServiceView.swift in Sources */,
 				8661797026C9AAE80099DACF /* SignUpView.swift in Sources */,
 				864BC3AE26C96297001B523D /* BeautyBarApp.swift in Sources */,
 				86E5408E26D84717006FE903 /* ServicesView.swift in Sources */,
@@ -525,7 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = IlyaSwift.BeautyBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -548,7 +568,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = IlyaSwift.BeautyBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

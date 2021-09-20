@@ -7,9 +7,50 @@
 //
 import FirebaseFirestore
 
+
 enum FBFirestore {
 
     // MARK: - Func to retrieve News for HomeView
+    
+    static func retrieveServices(key: String, completion: @escaping (Result<[FBServices], Error>) -> ()) {
+        Firestore.firestore()
+            .collection(FBKeys.CollectionPath.services)
+            .whereField("service", isEqualTo: key)
+            .getDocuments { (snapshot, err) in
+                if let err = err {
+                    completion(.failure(err))
+                    return
+                }
+                guard let documents = snapshot?.documents else {
+                    completion(.failure(FireStoreError.noDocumentSnapshot))
+                    return
+                }
+                completion(.success(documents.map( { queryDocumentSnapshot -> FBServices in
+                    let data = queryDocumentSnapshot.data()
+                    print(data)
+                    return FBServices(documentData: data)!
+                }
+                )))
+            }
+    }
+    
+    static func addService(service: String,
+                           title: String,
+                           text: String, uid: String) {
+        let id = Int.random(in: 1...999999999999999999)
+        let date = Date()
+        Firestore.firestore()
+            .collection(FBKeys.CollectionPath.services)
+            .document("\(id)")
+            .setData([ "id" : id,
+                       "service" : service,
+                       "title" : title,
+                       "text" : text,
+                       "date" : date,
+                       "uid" : uid
+            ])
+        print(id, service, title, text, date)
+    }
     
     static func retrieveFBNews(completion: @escaping (Result<[FBNews], Error>) -> ()) {
         Firestore.firestore()
