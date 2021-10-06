@@ -167,11 +167,15 @@ struct FBAuth {
  */
     // MARK: - FB Firestore User creation
     static func createUser(withEmail email:String,
-                           name: String,
+                           firstName: String,
+                           secondName: String,
                            password:String,
                            city: String,
-                           bool: Bool,
+                           isWorkerBool: Bool,
+                           isCompanyBool: Bool,
+                           profilePhoto: UIImage,
                            completionHandler:@escaping (Result<Bool,Error>) -> Void) {
+        var profilePhotoURL = ""
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if let err = error {
                 completionHandler(.failure(err))
@@ -181,16 +185,32 @@ struct FBAuth {
                 completionHandler(.failure(error!))
                 return
             }
-            let data = FBUser.dataDict(uid: authResult!.user.uid,
-                                       name: name,
-                                       email: authResult!.user.email!,
-                                       city: city,
-                                       bool: bool)
-            
-            FBFirestore.mergeFBUser(data, uid: authResult!.user.uid) { (result) in
-                completionHandler(result)
+            FBFirestore.upploadPhoto(reference: "users",
+                                     id: "\(authResult!.user.uid)",
+                                     image: profilePhoto) { result in
+                switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success(let data):
+                    profilePhotoURL = data
+                }
             }
-            completionHandler(.success(true))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                let data = FBUser.dataDict(uid: authResult!.user.uid,
+                                           firstName: firstName,
+                                           secondName: secondName,
+                                           email: authResult!.user.email!,
+                                           city: city,
+                                           isWorkerBool: isWorkerBool,
+                                           isCompanyBool: isCompanyBool,
+                                           profilePhotoURL: profilePhotoURL)
+                
+                FBFirestore.mergeFBUser(data, uid: authResult!.user.uid) { (result) in
+                    completionHandler(result)
+                }
+                completionHandler(.success(true))
+            }
+            
         }
     }
     

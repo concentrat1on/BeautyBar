@@ -15,9 +15,14 @@ struct PieceOfNewsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                LoadImage(url: imageURL,
-                          width: UIScreen.main.bounds.width,
-                          height: UIScreen.main.bounds.width / 2 * 1)
+                AsyncImage(url: imageURL,
+                           placeholder: { Image("Loading")
+                        .resizable()
+                        .frame(width: 50, height: 50) },
+                           image: { Image(uiImage: $0).resizable() })
+                    .frame(
+                        width: UIScreen.main.bounds.width,
+                        height: UIScreen.main.bounds.width / 2 * 1)
                 Text(title)
                     .font(.system(size: 25))
                     .fontWeight(.bold)

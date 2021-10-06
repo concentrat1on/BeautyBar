@@ -17,10 +17,13 @@ enum FBKeys {
     
     enum User {
         static let uid = "uid"
-        static let name = "name"
+        static let firstName = "firstName"
+        static let secondName = "secondName"
         static let email = "email"
         static let city = "city"
-        static let bool = "bool"
+        static let isWorkerBool = "isWorkerBool"
+        static let isCompanyBool = "isCompanyBool"
+        static let profilePhotoURL = "profilePhotoURL"
         
         // Add app specific keys here
     }
@@ -34,9 +37,16 @@ enum FBKeys {
     
     enum Services {
         static let id = "id"
-        static let service = "service"
-        static let title = "title"
-        static let text = "text"
         static let date = "date"
+        static let uid = "uid"
+        static let imageURL = "imageURL"
+        static let title = "title"
+        static let price = "price"
+        static let service = "service"
+        static let city = "city"
+        static let phoneNumber = "phoneNumber"
+        static let email = "email"
+        static let text = "text"
+
     }
 }

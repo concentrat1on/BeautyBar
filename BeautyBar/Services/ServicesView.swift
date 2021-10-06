@@ -22,10 +22,11 @@ struct ServicesView: View {
                     ForEach(services, id: \.self) { service in
                         NavigationLink(
                             destination: SectionServiceView(
-                                service: service)) {
+                                key: service, object: "service", title: service)) {
                                 ServiceCell(
                                     text: service,
-                                    image: Image(service))
+                                    image: Image(service)
+                                )
                             }
                         
                     }
@@ -33,18 +34,16 @@ struct ServicesView: View {
                 .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
             .navigationTitle("Услуги")
+            
+            // if user is not signed in and if he/she is not a worker he/she can not create a Service
             .toolbar {
-                if userInfo.isUserAuntheticated == .undefined {
-                    Text("Загрузка, подождите пожалуйста")
-                } else if userInfo.isUserAuntheticated == .signedOut {
-                    Text("Login please")
-                } else if userInfo.isUserAuntheticated == .signedIn && userInfo.user.bool {
+                if userInfo.isUserAuntheticated == .signedIn && userInfo.user.isWorkerBool {
                     Button(action: { isActive = true }, label: {
                         NavigationLink(
                             destination: AddServiceView(),
                             isActive: $isActive,
                             label: {
-                                Image(systemName: "plus")
+                                Text("Добавить услугу")
                             })
                     })
                 }

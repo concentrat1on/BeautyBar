@@ -12,7 +12,10 @@ struct SectionServiceView: View {
     @State private var data: [FBServices] = []
     @EnvironmentObject var favorites: FavoritesModel
     
-    let service: String
+    let key: String
+    let object: String
+    let title: String
+    
     var body: some View {
         ScrollView {
             LazyVStack {
@@ -21,6 +24,14 @@ struct SectionServiceView: View {
                         destination: SingleServiceView(service: service)) {
                         VStack(alignment: .leading) {
                             HStack {
+                                AsyncImage(url: URL(string: service.imageURL)!,
+                                           placeholder: { Image("Loading")
+                                        .resizable()
+                                        .frame(width: 30, height: 30) },
+                                           image: { Image(uiImage: $0).resizable() })
+                                    .frame(width: 120, height: 120)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.leading, 10)
                                 Text(service.title)
                                     .padding()
                                 Text(dateFormatter(object: service.date))
@@ -39,10 +50,10 @@ struct SectionServiceView: View {
                 }
             }
         }
-        .navigationTitle(service)
+        .navigationTitle(title)
         
         .onAppear {
-            FBFirestore.retrieveServices(key: service) { result in
+            FBFirestore.retrieveServices(object: object, key: key) { result in
                 switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -59,7 +70,7 @@ struct SectionServiceView: View {
 
 struct SectionServiceView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionServiceView(service: "MakeUp")
+        SectionServiceView(key: "MakeUp", object: "service", title: "MakeUp")
     }
 }
 

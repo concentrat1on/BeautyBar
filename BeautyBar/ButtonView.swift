@@ -22,7 +22,7 @@ struct ButtonView: View {
             Button(action: action) {
                 Text(text)
                     .font(.system(size: 20))
-                    .fontWeight(.light)
+                    .fontWeight(.semibold)
                     .foregroundColor(color)
             }
             .frame(width: width, height: height)

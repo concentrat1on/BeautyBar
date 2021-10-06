@@ -27,9 +27,13 @@ struct NewsCell: View {
         )) {
             ZStack {
                 VStack(alignment: .center) {
-                    LoadImage(url: imageURL,
-                              width: UIScreen.main.bounds.width - 41,
-                              height: UIScreen.main.bounds.width / 2 * 1 - 20.5)
+
+                    AsyncImage(url: imageURL,
+                               placeholder: { Image("Loading")
+                            .resizable()
+                            .frame(width: 50, height: 50) },
+                               image: { Image(uiImage: $0).resizable() })
+                        .frame(width: UIScreen.main.bounds.width - 41, height: UIScreen.main.bounds.width / 2 * 1 - 20.5)
                     Text(title)
                         .font(.system(size: 25))
                         .fontWeight(.bold)
@@ -38,7 +42,7 @@ struct NewsCell: View {
                 }
                 .frame(width: UIScreen.main.bounds.width - 41, alignment: .center)
                 .background(color)
-                .cornerRadius(40)
+                .cornerRadius(20)
                 .shadow(color: color, radius: 8, x: 0.0, y: 0.0)
             }
         }

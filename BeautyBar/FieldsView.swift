@@ -18,7 +18,7 @@ struct TextFieldView: View {
             .disableAutocorrection(true)
             .autocapitalization(.none)
             .padding(10)
-            .font(Font.system(size: 17, weight: .medium, design: .monospaced))
+            .font(Font.system(size: 17, weight: .medium, design: .default))
             .overlay(
                 RoundedRectangle(
                     cornerRadius: 10)
@@ -45,7 +45,7 @@ struct SecureFieldView: View {
             .disableAutocorrection(true)
             .autocapitalization(.none)
             .padding(10)
-            .font(Font.system(size: 17, weight: .medium, design: .monospaced))
+            .font(Font.system(size: 17, weight: .medium, design: .default))
             .overlay(
                 RoundedRectangle(
                     cornerRadius: 10)

@@ -10,10 +10,9 @@ import Firebase
 
 struct ContentView: View {
     
-    @StateObject var tabBar: TabBar
+    @EnvironmentObject var tabBar: TabBar
     @EnvironmentObject var userInfo: UserInfo
 
-    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
@@ -24,7 +23,7 @@ struct ContentView: View {
                 case .services:
                     ServicesView()
                 case .promotions:
-                    Text("Promotions")
+                    AddServiceView()
                 case .favorites:
                     Text("Favorites")
                 case .profile:
@@ -39,6 +38,40 @@ struct ContentView: View {
                 TabBarView(tabBar: tabBar, width: geometry.size.width, height: geometry.size.height)
             }
         }
+//        TabView {
+//            ServicesView()
+//                .tabItem {
+//                    Label("Сервисы", systemImage: "paintbrush")
+//                }
+//            Text("Promotions")
+//                .tabItem {
+//                    Label("Акции", systemImage: "flame")
+//                }
+//            Text("Favorites")
+//                .tabItem {
+//                    Label("Избранное", systemImage: "heart")
+//                }
+//            NewsView()
+//                .tabItem {
+//                    Label("Новости", systemImage: "icloud")
+//                }
+//            if userInfo.isUserAuntheticated == .undefined {
+//                Text("Загрузка, подождите пожалуйста")
+//                    .tabItem {
+//                        Label("Профиль", systemImage: "person")
+//                    }
+//            } else if userInfo.isUserAuntheticated == .signedOut {
+//                LoginView()
+//                    .tabItem {
+//                        Label("Профиль", systemImage: "person")
+//                    }
+//            } else {
+//                ProfileView()
+//                    .tabItem {
+//                        Label("Профиль", systemImage: "person")
+//                    }
+//            }
+//        }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear(perform: userInfo.configureFirebaseStateDidChange)
         .onAppear {
@@ -59,6 +92,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(tabBar: TabBar())
+        ContentView()
     }
 }

@@ -6,16 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 struct UserViewModel {
     
+    
+    
+    var profilePhoto = UIImage(named: "Avatar")!
     var email = ""
     var password = ""
     var confirmPassword = ""
-    var fullname = ""
     var city = ""
-    var age = Date()
-    var bool = Bool()
+    var isWorkerBool = Bool()
+    var isCompanyBool = Bool()
+    var firstName = ""
+    var secondName = ""
+    var fullName: String {
+        return ("\(firstName)  \(secondName)")
+    }
     
     // MARK: Проверка полей
     
@@ -43,7 +51,8 @@ struct UserViewModel {
         if !isEmailValid(email: email) ||
             !isPasswordValid(password: password) ||
             !passwordMatch(ConfirmPassword: confirmPassword) ||
-            isEmpty(field: fullname) ||
+            isEmpty(field: firstName) ||
+            isEmpty(field: secondName) ||
             isEmpty(field: city) {
             return false
         } else { return true }
@@ -83,7 +92,8 @@ struct UserViewModel {
     }
     
     var validFullnameText: String {
-        if !isEmpty(field: fullname) {
+        if !isEmpty(field: firstName) &&
+            !isEmpty(field: secondName) {
             return ""
         } else {
             return "Введите ваше имя и фамилию"
@@ -98,5 +108,11 @@ struct UserViewModel {
         }
     }
     
-    
+    var filledPhotoAndFullname: Bool {
+        if isEmpty(field: firstName) ||
+            isEmpty(field: secondName) ||
+            profilePhoto == UIImage(named: "Avatar") {
+            return false
+        } else { return true }
+    }    
 }

@@ -11,6 +11,9 @@ import RealmSwift
 struct SingleServiceView: View {
     
     @EnvironmentObject var favorites: FavoritesModel
+    @EnvironmentObject var userInfo: UserInfo
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showingDeleteAlert = false
 
     let service: FBServices
     
@@ -21,7 +24,15 @@ struct SingleServiceView: View {
                     .font(.system(size: 25))
                     .fontWeight(.bold)
                 HStack {
-                    Text("+380502222222")
+
+                    AsyncImage(url: URL(string: service.imageURL)!,
+                               placeholder: { Image("Loading")
+                            .resizable()
+                            .frame(width: 30, height: 30) },
+                               image: { Image(uiImage: $0).resizable() })
+                        .frame(width: 120, height: 120)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Text(service.uid)
                         .font(.system(size: 15))
                         .fontWeight(.regular)
                         .foregroundColor(.gray)
@@ -42,17 +53,35 @@ struct SingleServiceView: View {
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if userInfo.isUserAuntheticated == .signedIn && userInfo.user.uid == service.uid {
+                Button("Удалить услугу") {
+                    self.showingDeleteAlert.toggle()
+                }
+            }
+            
+        }
         .onAppear() {
             favorites.fetchData()
             print(Realm.Configuration.defaultConfiguration.fileURL!)
+            
         }
+        .alert(isPresented: $showingDeleteAlert) {
+            Alert(title: Text("Удаление услуги"),
+                  message: Text("Вы точно хотите удалить данную услугу?"),
+                  primaryButton: .destructive(Text("Да")) {
+                FBFirestore.deleteService(reference: "services", id: service.id)
+                presentationMode.wrappedValue.dismiss()
+            },
+                  secondaryButton: .cancel(Text("Нет"))
+            )}
     }
 }
 
 
 struct SingleServiceView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleServiceView(service: FBServices.init(id: 0, service: "service", title: "title", text: "text", date: Date()))
+        SingleServiceView(service: FBServices.init(id: 0, date: Date(), uid: "uid", imageURL: "imageURL", title: "title", price: 0, service: "service", city: "city", phoneNumber: "phoneNumber", email: "email", text: "text"))
     }
 }
 

@@ -15,6 +15,8 @@ enum FireStoreError: Error {
     case noDocumentSnapshot
     case noSnapshotData
     case noUser
+    case noStorageMetaData
+    case notPostedData
 }
 
 extension FireStoreError: LocalizedError {
@@ -31,6 +33,10 @@ extension FireStoreError: LocalizedError {
             return NSLocalizedString("No Snapshot Data", comment: "")
         case .noUser:
             return NSLocalizedString("No User", comment: "")
+        case .noStorageMetaData:
+            return NSLocalizedString("No Storage Meta Data", comment: "")
+        case .notPostedData:
+            return NSLocalizedString("Not Posted Data", comment: "")
         }
     }
 }
