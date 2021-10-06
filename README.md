@@ -17,16 +17,17 @@ WHAT HAVE I DONE:
 - ServicesSectionView with sorting by categories
 - SingleServiceView
 - Add to favourite func
+- AddServiceView
+- Deletion my service
 
 WHAT'S NEXT:
 - Promotions View [WIP]
 - Favorites View (UI part)
 - Profile View (delete account func)
 * I don't like how NewsView, PieceOfNewsView and ProfileView look like, they need to be changed one day 
-** I will make some changes with Tab Bar
-*** Also the entire design can be changed :)
+** Also the entire design can be changed :)
 
 
 FEATURES/BUGS:
-1. Slow image downloading system - i will add some sort of async image downloading func 
-2. Some problems with ServicesView on small iPhones, easy to fix but found it when published 
+1. Slow image downloading system - i will add some sort of async image downloading func - DONE
+2. Some problems with ServicesView on small iPhones, easy to fix but found it when published - DONE
